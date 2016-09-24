@@ -76,14 +76,14 @@ int main(int argc, char **argv)
     /* Humidity is located in first two bytes */
     int reading_hum = (buf[0] << 8) + buf[1];
     double humidity = reading_hum / 16382.0 * 100.0;
-//    cout.precision(2);
-   //cout << humidity << endl;
     printf("%.1f", humidity);
-
+    /*Uncoment this line for  detail output*/
+    //printf("Humidity: %f\n", humidity);
     /* Temperature is located in next two bytes, padded by two trailing bits */
     int reading_temp = (buf[2] << 6) + (buf[3] >> 2);
     double temperature = reading_temp / 16382.0 * 165.0 - 40;
-//    cout.precision(2);
+    /*Uncoment this line for  detail output*/
+    //printf("Temperature: %f\n", temperature);
     printf(",%.1f", temperature);
   }
 
